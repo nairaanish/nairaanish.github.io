@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <style>
+        /* Theme Variables */
+        :root[data-theme="light"] {
+            --background: #ffffff;
+            --text: #1a1a1a;
+            --accent: #2563eb;
+            --surface: #f1f5f9;
+            --border: #e2e8f0;
+        }
+
+        :root[data-theme="dark"] {
+            --background: #0f172a;
+            --text: #f1f5f9;
+            --accent: #60a5fa;
+            --surface: #1e293b;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--background);
+            padding: 1.5rem 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scale-up {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--surface);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        section {
+            padding: 8rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">YourName</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle">Toggle Theme</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-up">Your Name</h1>
+            <p class="fade-up" style="transition-delay: 0.2s">Developer & Designer</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h2 class="slide-left">About Me</h2>
+                    <p class="slide-left" style="transition-delay: 0.2s">A passionate developer focused on creating intuitive and impactful digital experiences.</p>
+                    <div class="skills fade-up" style="transition-delay: 0.4s">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">UI/UX</span>
+                    </div>
+                </div>
+                <img src="/api/placeholder/400/400" alt="Profile" class="slide-right" style="width: 100%; border-radius: 0.5rem;">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="fade-up">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card scale-up" style="transition-delay: 0.2s">
+                    <h3>Project One</h3>
+                    <p>Description of your first project goes here. Explain what you built and the technologies used.</p>
+                </div>
+                <div class="project-card scale-up" style="transition-delay: 0.4s">
+                    <h3>Project Two</h3>
+                    <p>Description of your second project goes here. Explain what you built and the technologies used.</p>
+                </div>
+                <div class="project-card scale-up" style="transition-delay: 0.6s">
+                    <h3>Project Three</h3>
+                    <p>Description of your third project goes here. Explain what you built and the technologies used.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="fade-up">Contact</h2>
+            <p class="fade-up" style="transition-delay: 0.2s">Interested in working together? Let's connect!</p>
+            <div class="contact-links fade-up" style="transition-delay: 0.4s">
+                <a href="mailto:your.email@example.com">Email</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+        });
+
+        // Scroll Animations
+        const animateElements = document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Trigger animations for elements visible on page load
+        setTimeout(() => {
+            document.querySelectorAll('.hero .fade-up').forEach(element => {
+                element.classList.add('animate');
+            });
+        }, 100);
+    </script>
+</body>
+</html>
