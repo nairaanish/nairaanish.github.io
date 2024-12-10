@@ -3,24 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Research Portfolio</title>
+    <title>Academic Portfolio</title>
     <style>
         :root {
+            --primary: #2d3748;
+            --secondary: #4a5568;
+            --accent: #3182ce;
             --background: #ffffff;
-            --text: #1a1a1a;
-            --accent: #4f46e5;
-            --surface: #f8fafc;
+            --surface: #f7fafc;
+            --text: #1a202c;
             --border: #e2e8f0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background: #0f172a;
-                --text: #f1f5f9;
-                --accent: #818cf8;
-                --surface: #1e293b;
-                --border: #334155;
-            }
         }
 
         * {
@@ -30,84 +22,165 @@
         }
 
         body {
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.6;
             font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
 
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--background);
-            padding: 1.5rem 0;
-            z-index: 100;
+            padding: 2rem 0;
             border-bottom: 1px solid var(--border);
+            margin-bottom: 4rem;
         }
 
-        .nav-content {
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--text);
+            color: var(--primary);
             text-decoration: none;
             margin-left: 2rem;
+            font-size: 0.95rem;
         }
 
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding-top: 60px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+        .nav-links a:hover {
             color: var(--accent);
-        }
-
-        .topic-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .topic-tag {
-            background: var(--surface);
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.9rem;
-            border: 1px solid var(--border);
         }
 
         section {
-            padding: 4rem 0;
+            margin-bottom: 5rem;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .nav-content {
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        p {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .interest-tag {
+            background: var(--surface);
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            border: 1px solid var(--border);
+        }
+
+        .papers {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .paper {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .paper h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .paper .links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .paper .links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .project {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .project h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
+            nav .container {
                 flex-direction: column;
                 gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                margin: 0;
+            }
+
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -115,36 +188,62 @@
 <body>
     <nav>
         <div class="container">
-            <div class="nav-content">
-                <div class="logo">Name</div>
-                <div class="nav-links">
-                    <a href="#research">Research</a>
-                    <a href="#publications">Publications</a>
-                    <a href="#projects">Projects</a>
-                </div>
+            <div class="name">Your Name</div>
+            <div class="nav-links">
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Research & ML Portfolio</h1>
-                <p>[Your research interests & focus areas]</p>
-                <div class="topic-tags">
-                    <span class="topic-tag">Deep Learning</span>
-                    <span class="topic-tag">NLP</span>
-                    <span class="topic-tag">Computer Vision</span>
+    <main class="container">
+        <section id="intro">
+            <h1>Research in Machine Learning</h1>
+            <p>[Brief introduction about your research focus and interests]</p>
+            <div class="interests">
+                <span class="interest-tag">Machine Learning</span>
+                <span class="interest-tag">Deep Learning</span>
+                <span class="interest-tag">Natural Language Processing</span>
+                <span class="interest-tag">Computer Vision</span>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>Research Areas</h2>
+            <div class="papers">
+                <div class="paper">
+                    <h3>[Research Paper Title]</h3>
+                    <p>[Brief description of the research work]</p>
+                    <div class="links">
+                        <a href="#">Paper</a>
+                        <a href="#">Code</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="research">
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>[Project Name]</h3>
+                    <p>[Brief description of the project and its impact]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>[Your professional email and relevant links]</p>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <h2>Research Areas</h2>
-            <!-- Research content will go here -->
+            <p>© 2024 Your Name. All rights reserved.</p>
         </div>
-    </section>
+    </footer>
 </body>
 </html>
