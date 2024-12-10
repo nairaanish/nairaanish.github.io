@@ -1,15 +1,184 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<!-- Previous head and style sections remain the same -->
 <head>
-    <!-- Previous head content remains the same -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Research Portfolio</title>
     <style>
-        /* Previous styles remain the same */
-        
-        /* Modified animation classes to ensure smooth transitions in both directions */
+        /* Theme Variables */
+        :root[data-theme="light"] {
+            --background: #ffffff;
+            --text: #1a1a1a;
+            --accent: #4f46e5;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+            --card: #ffffff;
+            --grid: #e2e8f0;
+            --code: #f1f5f9;
+        }
+
+        :root[data-theme="dark"] {
+            --background: #0f172a;
+            --text: #f1f5f9;
+            --accent: #818cf8;
+            --surface: #1e293b;
+            --border: #334155;
+            --card: #1e293b;
+            --grid: #334155;
+            --code: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Neural Network Background */
+        .neural-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--background);
+            padding: 1.5rem 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(120deg, var(--accent), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Research Cards */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: var(--card);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Code-like sections */
+        .code-block {
+            background: var(--code);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            font-family: 'Fira Code', monospace;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+
+        /* Publications Section */
+        .publication {
+            background: var(--surface);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Matrix Animation */
+        .matrix-container {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .matrix {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 2px;
+        }
+
+        .matrix-cell {
+            aspect-ratio: 1;
+            background: var(--accent);
+            opacity: 0.1;
+        }
+
+        /* Animations */
         .fade-up {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             will-change: opacity, transform;
         }
@@ -20,37 +189,93 @@
             will-change: opacity;
         }
 
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, transform;
-        }
-
-        .slide-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, transform;
-        }
-
-        .scale-up {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            will-change: opacity, transform;
-        }
-
         .animate {
             opacity: 1;
-            transform: translate(0) scale(1);
+            transform: translateY(0);
         }
 
-        /* Previous styles continue... */
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Research Topics */
+        .topic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .topic-tag {
+            background: var(--surface);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .matrix-container {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Previous HTML content remains exactly the same until the script section -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Name</div>
+                <div class="nav-links">
+                    <a href="#research">Research</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#projects">Projects</a>
+                    <button class="theme-toggle">Toggle Theme</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="neural-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-up">Research & ML<br>Portfolio</h1>
+                <p class="fade-up" style="transition-delay: 0.2s">[Your research interests & focus areas]</p>
+                <div class="topic-tags fade-up" style="transition-delay: 0.3s">
+                    <span class="topic-tag">Deep Learning</span>
+                    <span class="topic-tag">NLP</span>
+                    <span class="topic-tag">Computer Vision</span>
+                </div>
+            </div>
+        </div>
+        <div class="matrix-container">
+            <div class="matrix">
+                <!-- Matrix cells will be added by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <h2 class="fade-up">Research Areas</h2>
+            <div class="research-grid">
+                <!-- Research cards will go here -->
+            </div>
+        </div>
+    </section>
 
     <script>
         // Theme Toggle
@@ -63,20 +288,22 @@
             html.setAttribute('data-theme', newTheme);
         });
 
-        // Enhanced Scroll Animations
-        const animateElements = document.querySelectorAll('.fade-up, .fade-in, .slide-left, .slide-right, .scale-up');
+        // Create matrix animation
+        const matrix = document.querySelector('.matrix');
+        for (let i = 0; i < 100; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'matrix-cell';
+            matrix.appendChild(cell);
+        }
 
+        // Scroll Animations
+        const animateElements = document.querySelectorAll('.fade-up, .fade-in');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Add animation class when element enters viewport
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate');
-                } else {
-                    // Remove animation class when element leaves viewport
-                    // Don't remove for hero section elements to keep them visible
-                    if (!entry.target.closest('.hero')) {
-                        entry.target.classList.remove('animate');
-                    }
+                } else if (!entry.target.closest('.hero')) {
+                    entry.target.classList.remove('animate');
                 }
             });
         }, {
@@ -84,12 +311,9 @@
             rootMargin: '-50px 0px -50px 0px'
         });
 
-        // Observe all animated elements
-        animateElements.forEach(element => {
-            observer.observe(element);
-        });
+        animateElements.forEach(element => observer.observe(element));
 
-        // Initial animation for hero section
+        // Initial animations
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.querySelectorAll('.hero .fade-up').forEach(element => {
