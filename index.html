@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aanish</title>
+    <style>
+        :root {
+            --primary: #2d3748;
+            --secondary: #4a5568;
+            --accent: #4a5568;
+            --background: #ffffff;
+            --surface: #f7fafc;
+            --text: #1a202c;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        nav {
+            margin-bottom: 3rem;
+        }
+
+        nav .name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        nav a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 1.5rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem 0;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .interest-tag {
+            background: var(--surface);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .paper, .project, .publication {
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .paper h3, .project h3, .publication-title {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            color: var(--secondary);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .links, .publication-links {
+            margin-top: 1rem;
+        }
+
+        .links a, .publication-links a {
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .links a:hover, .publication-links a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem;
+            }
+
+            .interests {
+                flex-direction: column;
+            }
+
+            nav a {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="name">Aanish Nair</div>
+        <div>
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="intro">
+        <h1>Research in Machine Learning</h1>
+        <p>[Brief introduction about your research focus and interests]</p>
+        <div class="interests">
+            <span class="interest-tag">Machine Learning</span>
+            <span class="interest-tag">Deep Learning</span>
+            <span class="interest-tag">Natural Language Processing</span>
+            <span class="interest-tag">Computer Vision</span>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research Areas</h2>
+        <div class="paper">
+            <h3>[Research Paper Title]</h3>
+            <p>[Brief description of the research work]</p>
+            <div class="links">
+                <a href="#">Paper</a>
+                <a href="#">Code</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>[Project Name]</h3>
+            <p>[Brief description of the project and its impact]</p>
+        </div>
+    </section>
+
+    <section id="publications">
+        <h2>Publications</h2>
+        <div class="publication">
+            <div class="publication-title">[Publication Title]</div>
+            <div class="publication-authors">[Author 1], [Author 2], [Author 3]</div>
+            <div class="publication-venue">[Conference/Journal Name, Year]</div>
+            <p>[Brief abstract or description of the publication]</p>
+            <div class="publication-links">
+                <a href="#">PDF</a>
+                <a href="#">Code</a>
+                <a href="#">Project Page</a>
+                <a href="#">Video</a>
+            </div>
+        </div>
+
+        <div class="publication">
+            <div class="publication-title">[Publication Title]</div>
+            <div class="publication-authors">[Author 1], [Author 2], [Author 3]</div>
+            <div class="publication-venue">[Conference/Journal Name, Year]</div>
+            <p>[Brief abstract or description of the publication]</p>
+            <div class="publication-links">
+                <a href="#">PDF</a>
+                <a href="#">Code</a>
+                <a href="#">Project Page</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>[Your professional email and relevant links]</p>
+    </section>
+</body>
+</html>
